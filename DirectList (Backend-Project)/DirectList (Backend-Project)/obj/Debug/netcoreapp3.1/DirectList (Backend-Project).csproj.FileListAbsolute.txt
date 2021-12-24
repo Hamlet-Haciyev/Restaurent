@@ -160,3 +160,11 @@ C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Shared\Error.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Home\Index.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Blog\Index.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Blog\Create.cshtml.g.cs
