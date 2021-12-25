@@ -12,16 +12,17 @@ namespace DirectList__Backend_Project_.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string FirstName { get; set; }
-        [MaxLength(50)]
+        [MaxLength(50), Required]
         public string LastName { get; set; }
         
-        [MaxLength(50)]
+        [MaxLength(50), Required]
         public string Email { get; set; }
-        [MaxLength(100)]
+        [MaxLength(100), Required]
         public string Subject { get; set; }
-        [MaxLength(1000)]
+        [MaxLength(1000), Required]
         public string Message { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

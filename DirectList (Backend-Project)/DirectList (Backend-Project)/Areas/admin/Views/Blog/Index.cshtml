@@ -30,8 +30,8 @@
                                         <tr>
                                             <th scope="row">@i</th>
                                             <td><img src="~/Uploads/@blog.Image" style="width:150px;max-height:150px;" alt="Alternate Text" /></td>
-                                            <td>@blog.Title</td>
-                                            <td>@Html.Raw(blog.Description.Length > 300 ? blog.Description.Substring(0, 300) + " ..." : blog.Description)</td>
+                                            <td style="max-width:200px;">@blog.Title</td>
+                                            <td style="max-width:400px;">@Html.Raw(blog.Description.Length > 300 ? blog.Description.Substring(0, 300) + " ..." : blog.Description)</td>
                                             <td>@blog.CreatedDate.ToString("dd/ MMMM /yyy")</td>
                                             <td>
                                                 <a class="btn btn-success" asp-area="Admin" asp-controller="Blog" asp-action="Update" asp-route-id="@blog.Id">Update</a>

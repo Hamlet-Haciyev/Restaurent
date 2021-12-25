@@ -168,3 +168,10 @@ C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Home\Index.cshtml.g.cs
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Blog\Index.cshtml.g.cs
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Blog\Create.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Blog\Update.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Social\Create.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Social\Index.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Social\Update.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Restaurant\Index.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Restaurant\Create.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Restaurant\CreateImages.cshtml.g.cs

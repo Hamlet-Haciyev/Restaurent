@@ -23,10 +23,8 @@ namespace DirectList__Backend_Project_.Areas.admin.Controllers
         }
         public IActionResult Index()
         {
-
             return View(_appDbContext.Blogs.ToList());
         }
-
         public IActionResult Create()
         {
             return View();
@@ -79,7 +77,57 @@ namespace DirectList__Backend_Project_.Areas.admin.Controllers
 
             return View(blog);
         }
+        public IActionResult Update(int? id)
+        {
+            Blog blog = _appDbContext.Blogs.Find(id);
 
+                    
+            return View(blog);
+        }
+        [HttpPost]
+        public IActionResult Update(Blog blog)
+        {
+            if (ModelState.IsValid)
+            {
+                if (blog.ImageFile != null)
+                {
+                    if (blog.ImageFile.ContentType=="image/png"||blog.ImageFile.ContentType=="image/jpeg")
+                    {
+
+                        if (blog.ImageFile.Length<2097152)
+                        {
+                            string pathFileImage = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", blog.Image);
+                            if (System.IO.File.Exists(pathFileImage))
+                            {
+                                System.IO.File.Delete(pathFileImage);
+                            }
+
+                            string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + blog.ImageFile.FileName;
+                            string pathName = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+
+                            using (var stream = new FileStream(pathName, FileMode.Create))
+                            {
+                                blog.ImageFile.CopyTo(stream);
+
+                            }
+                            blog.Image = fileName;
+                            _appDbContext.Blogs.Update(blog);
+                            _appDbContext.SaveChanges();
+                            return RedirectToAction("Index");
+
+                        }
+                    }
+                }
+                else
+                {
+                    _appDbContext.Blogs.Update(blog);
+                    _appDbContext.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(blog);
+        }
         public IActionResult Delete(int? id)
         {
 

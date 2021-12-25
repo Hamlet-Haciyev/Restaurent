@@ -12,11 +12,11 @@ namespace DirectList__Backend_Project_.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(150)]
+        [MaxLength(150),Required]
         public string Name { get; set; }
-        [MaxLength(2000)]
+        [MaxLength(2000), Required]
         public string About { get; set; }
-        [MaxLength(250)]
+        [MaxLength(250), Required]
         public string Address { get; set; }
         [MaxLength(30)]
         public string Phone_1 { get; set; }
@@ -31,6 +31,9 @@ namespace DirectList__Backend_Project_.Models
         [MaxLength(1000)]
         public string Location_Note { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        [NotMapped]
+        public List<IFormFile> ImageFiles { get; set; }
 
         public List<MenuToRestaurant> MenuToRestaurants { get; set; }
         public List<TagToRestaurant> TagToRestaurants { get; set; }
