@@ -61,7 +61,7 @@ namespace DirectList__Backend_Project_
                 endpoints.MapAreaControllerRoute(
                     name:"Areas",
                     areaName:"admin",
-                    pattern:"admin/{controller=Home}/{action=Index}/{id?}"
+                    pattern:"admin/{controller=account}/{action=login}/{id?}"
                     
                     );
                 endpoints.MapControllerRoute(

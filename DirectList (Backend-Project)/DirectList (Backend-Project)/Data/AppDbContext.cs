@@ -32,6 +32,8 @@ namespace DirectList__Backend_Project_.Data
         public DbSet<Social> Socials { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<TagToRestaurant> TagToRestaurants { get; set; }
-
+        public DbSet<WorkingProcess> WorkingProcesses { get; set; }
+        public DbSet<YourDream> YourDreams { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
     }
 }

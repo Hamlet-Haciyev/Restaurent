@@ -30,10 +30,19 @@ namespace DirectList__Backend_Project_.Models
         public string Location { get; set; }
         [MaxLength(1000)]
         public string Location_Note { get; set; }
+        [Required]
+        public short Capacity { get; set; }
+        public string Website { get; set; }
         public DateTime CreatedDate { get; set; }
 
         [NotMapped]
         public List<IFormFile> ImageFiles { get; set; }
+
+        [NotMapped]
+        public List<int> Tags { get; set; }
+
+        [NotMapped]
+        public List<int> Features { get; set; }
 
         public List<MenuToRestaurant> MenuToRestaurants { get; set; }
         public List<TagToRestaurant> TagToRestaurants { get; set; }
@@ -41,5 +50,6 @@ namespace DirectList__Backend_Project_.Models
         public List<RestaurantImages> RestaurantImages { get; set; }
         public List<RestBook> RestBooks { get; set; }
         public List<RestaurantComment> RestaurantComments { get; set; }
+        public List<Administrator> Administrators { get; set; }
     }
 }

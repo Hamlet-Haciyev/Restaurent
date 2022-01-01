@@ -12,7 +12,7 @@ namespace DirectList__Backend_Project_.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(80)]
+        [MaxLength(80),Required]
         public string Name { get; set; }
         public List<FeaturesToRestaurant> FeaturesToRestaurants { get; set; }
     }

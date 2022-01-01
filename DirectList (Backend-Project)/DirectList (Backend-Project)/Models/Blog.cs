@@ -17,10 +17,11 @@ namespace DirectList__Backend_Project_.Models
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        [MaxLength(150)]
+        [MaxLength(150),Required]
         public string Title { get; set; }
-
-        [Column(TypeName ="ntext")]
+        [MaxLength(2000),Required]
+        public string About { get; set; }
+        [Column(TypeName ="ntext"),Required]
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<BlogComment> Comments { get; set; }

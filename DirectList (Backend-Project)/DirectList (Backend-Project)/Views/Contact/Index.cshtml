@@ -1,29 +1,10 @@
-﻿@model Contact
+﻿@model VmContact
 @{
     ViewData["Title"] = "Index";
 }
 
 <div class="main-wrapper">
-    <div id="titlebar" class="gradient">
-        <div class="title-bar-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Contact Us</h2>
-                        <span>Explore your search places</span>
-                        <!-- Breadcrumbs -->
-                        <nav id="breadcrumbs">
-                            <ul>
-                                <li><a>Home</a></li>
-                                <li>Contact Us</li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="title-overlay"></div>
-    </div>
+    <partial name="_BannerPartial" model="@Model.Banner">
     <div class="content pb-0">
         <div class="container">
             <div class="contact-wrapper">
@@ -46,7 +27,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                                             </div>
-                                            <input asp-for="@Model.FirstName" class="form-control" placeholder="First Name" type="text">
+                                            <input asp-for="@Model.Contact.FirstName" class="form-control" placeholder="First Name" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +37,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                                             </div>
-                                            <input asp-for="@Model.LastName" class="form-control" placeholder="Last Name" type="text">
+                                            <input asp-for="@Model.Contact.LastName" class="form-control" placeholder="Last Name" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +47,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                             </div>
-                                            <input asp-for="@Model.Email" class="form-control" placeholder="Email address" type="email">
+                                            <input asp-for="@Model.Contact.Email" class="form-control" placeholder="Email address" type="email">
                                         </div>
                                     </div>
                                 </div>
@@ -76,13 +57,13 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-user-run"></i></span>
                                             </div>
-                                            <input asp-for="@Model.Subject" class="form-control" placeholder="Subject" type="text">
+                                            <input asp-for="@Model.Contact.Subject" class="form-control" placeholder="Subject" type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
-                                <textarea class="form-control form-control-alternative" asp-for="@Model.Message" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                                <textarea class="form-control form-control-alternative" asp-for="@Model.Contact.Message" rows="4" cols="80" placeholder="Type a message..."></textarea>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary btn-round btn-block btn-lg">Send Message</button>
@@ -99,19 +80,19 @@
                         <div class="col-lg-4 col-md-12 mb-4">
                             <div class="contact-media">
                                 <i class="fa fa-map-marker"></i><span>Address:</span>
-                                <p>423B, Road Wordwide Country, USA</p>
+                                <p>@Model.Setting.Addresss_2</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="contact-media">
                                 <i class="fa fa-envelope"></i><span>Email Address</span><a href="#">
-                                    htinfotech7@gmail.com
+                                    @Model.Setting.Email_2
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="contact-media">
-                                <i class="fa fa-phone"></i><span>Phone Number</span><a href="#">+01-1234-567-8900</a>
+                                <i class="fa fa-phone"></i><span>Phone Number</span><a href="#">@Model.Setting.Phone_2</a>
                             </div>
                         </div>
                     </div>

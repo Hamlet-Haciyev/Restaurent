@@ -1,0 +1,48 @@
+﻿@model List<WorkingProcess>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="WorkProcess" asp-action="Create">Create</a>
+        </div>
+        <hr />
+        <div class="col-lg-12 mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Icon</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Content</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1;
+
+                        foreach (var working in Model)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td><i class="@working.Icon"></i></td>
+                                <td style="max-width:200px;">@working.Title</td>
+                                <td style="max-width:200px;">@Html.Raw(working.Content.Length > 200 ? working.Content.Substring(0, 200) + " ..." : working.Content)</td>
+                                <td>
+                                    <a class="btn btn-success" asp-area="Admin" asp-controller="WorkProcess" asp-action="Update" asp-route-id="@working.Id">Update</a>
+                                    <a class="btn btn-danger" asp-area="Admin" asp-controller="WorkProcess" asp-action="Delete" asp-route-id="@working.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

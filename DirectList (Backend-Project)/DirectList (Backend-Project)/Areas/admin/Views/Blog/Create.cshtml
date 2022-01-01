@@ -20,11 +20,16 @@
                 <span asp-validation-for="@Model.Title" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="@Model.About" class="form-label">About</label>
+                <input class="form-control" asp-for="@Model.About">
+                <span asp-validation-for="@Model.About" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <label asp-for="@Model.Description" class="form-label">Description</label>
-                <input class="form-control" asp-for="@Model.Description">
+                <textarea id="editor" class="form-control" asp-for="@Model.Description"></textarea>
                 <span asp-validation-for="@Model.Description" class="text-danger"></span>
-            </div>  
-            
+            </div>
+
             <button type="submit" class="btn btn-primary">Create</button>
             <a asp-area="Admin" asp-controller="Blog" asp-action="Index">Back to list</a>
         </form>

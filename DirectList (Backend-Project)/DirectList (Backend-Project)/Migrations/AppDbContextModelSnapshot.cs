@@ -30,6 +30,9 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("ntext");
+
                     b.Property<string>("Image")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -41,6 +44,39 @@ namespace DirectList__Backend_Project_.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Abouts");
+                });
+
+            modelBuilder.Entity("DirectList__Backend_Project_.Models.Administrator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("RestaurantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
+
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("DirectList__Backend_Project_.Models.Banner", b =>
@@ -74,10 +110,16 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("ntext");
 
                     b.Property<string>("Image")
@@ -85,6 +127,7 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -107,21 +150,25 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<int>("ParentCommentId")
+                    b.Property<int?>("ParentCommentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Text")
+                        .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
@@ -182,6 +229,7 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
@@ -220,6 +268,7 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
@@ -236,6 +285,7 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -305,6 +355,9 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<short>("Capacity")
+                        .HasColumnType("smallint");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -338,6 +391,9 @@ namespace DirectList__Backend_Project_.Migrations
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -479,6 +535,7 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -507,6 +564,54 @@ namespace DirectList__Backend_Project_.Migrations
                     b.HasIndex("TagId");
 
                     b.ToTable("TagToRestaurants");
+                });
+
+            modelBuilder.Entity("DirectList__Backend_Project_.Models.WorkingProcess", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Icon")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkingProcesses");
+                });
+
+            modelBuilder.Entity("DirectList__Backend_Project_.Models.YourDream", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Icon")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("YourDreams");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -715,6 +820,9 @@ namespace DirectList__Backend_Project_.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FullName")
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
@@ -724,10 +832,22 @@ namespace DirectList__Backend_Project_.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Text")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .IsRequired()
+                        .HasMaxLength(3000)
+                        .HasColumnType("nvarchar(3000)");
 
                     b.HasDiscriminator().HasValue("CustomUser");
+                });
+
+            modelBuilder.Entity("DirectList__Backend_Project_.Models.Administrator", b =>
+                {
+                    b.HasOne("DirectList__Backend_Project_.Models.Restaurant", "Restaurant")
+                        .WithMany("Administrators")
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("DirectList__Backend_Project_.Models.BlogComment", b =>
@@ -740,9 +860,7 @@ namespace DirectList__Backend_Project_.Migrations
 
                     b.HasOne("DirectList__Backend_Project_.Models.BlogComment", "ParentComment")
                         .WithMany()
-                        .HasForeignKey("ParentCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentCommentId");
 
                     b.Navigation("Blog");
 
@@ -907,6 +1025,8 @@ namespace DirectList__Backend_Project_.Migrations
 
             modelBuilder.Entity("DirectList__Backend_Project_.Models.Restaurant", b =>
                 {
+                    b.Navigation("Administrators");
+
                     b.Navigation("FeaturesToRestaurants");
 
                     b.Navigation("MenuToRestaurants");

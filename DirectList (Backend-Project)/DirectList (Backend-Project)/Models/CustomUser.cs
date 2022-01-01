@@ -19,9 +19,9 @@ namespace DirectList__Backend_Project_.Models
 
         [MaxLength(80)]
         public string FullName { get; set; }
-       
-        [MaxLength(1000)]
+        public DateTime CreatedDate { get; set; }
+        [MaxLength(3000),Required]
         public string Text { get; set; }
-        
+       
     }
 }

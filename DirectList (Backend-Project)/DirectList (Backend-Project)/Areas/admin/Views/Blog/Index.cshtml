@@ -17,6 +17,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Title</th>
+                        <th scope="col">About</th>
                         <th scope="col">Description</th>
                         <th scope="col">CreatedDate</th>
                         <th scope="col"></th>
@@ -31,6 +32,7 @@
                                             <th scope="row">@i</th>
                                             <td><img src="~/Uploads/@blog.Image" style="width:150px;max-height:150px;" alt="Alternate Text" /></td>
                                             <td style="max-width:200px;">@blog.Title</td>
+                                            <td style="max-width:200px;">@Html.Raw(blog.About.Length > 300 ? blog.About.Substring(0, 300) + " ..." : blog.About)</td>
                                             <td style="max-width:400px;">@Html.Raw(blog.Description.Length > 300 ? blog.Description.Substring(0, 300) + " ..." : blog.Description)</td>
                                             <td>@blog.CreatedDate.ToString("dd/ MMMM /yyy")</td>
                                             <td>

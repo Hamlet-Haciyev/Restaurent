@@ -22,10 +22,12 @@ namespace DirectList__Backend_Project_.Models
         public int RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
 
-        [Column(TypeName ="money")]
+        [Column(TypeName ="money"),Required]
         public decimal Price { get; set; }
 
-        [MaxLength(1000)]
+        [MaxLength(1000), Required]
         public string Description { get; set; }
+        
+
     }
 }

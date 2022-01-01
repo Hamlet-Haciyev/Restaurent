@@ -10,16 +10,11 @@
             <form asp-area="Admin" asp-controller="Restaurant" asp-action="Create" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
 
-
-
-                @{                 
-                        <div class="mb-3">
-                            <label asp-for="@Model.ImageFiles" class="form-label">Name</label>
-                            <input class="form-control" asp-for="@Model.ImageFiles" multiple>
-                            <span asp-validation-for="@Model.ImageFiles" class="text-danger"></span>
-                        </div>                  
-                }
-
+                <div class="mb-3">
+                    <label asp-for="@Model.ImageFiles" class="form-label">Name</label>
+                    <input class="form-control" asp-for="@Model.ImageFiles" multiple>
+                    <span asp-validation-for="@Model.ImageFiles" class="text-danger"></span>
+                </div>
 
                 <div class="mb-3">
                     <label asp-for="@Model.Name" class="form-label">Name</label>
@@ -29,7 +24,8 @@
 
                 <div class="mb-3">
                     <label asp-for="@Model.About" class="form-label">About</label>
-                    <input class="form-control" asp-for="@Model.About">
+                    <textarea id="editor" class="form-control" asp-for="@Model.About"></textarea>
+                    @*<input class="form-control" asp-for="@Model.About">*@
                     <span asp-validation-for="@Model.About" class="text-danger"></span>
                 </div>
 
@@ -38,7 +34,7 @@
                     <input class="form-control" asp-for="@Model.Address">
                     <span asp-validation-for="@Model.Address" class="text-danger"></span>
                 </div>
-
+                
                 <div class="mb-3">
                     <label asp-for="@Model.Phone_1" class="form-label">Phone_1</label>
                     <input class="form-control" asp-for="@Model.Phone_1">
@@ -55,6 +51,18 @@
                     <label asp-for="@Model.Phone_3" class="form-label">Phone_3</label>
                     <input class="form-control" asp-for="@Model.Phone_3">
                     <span asp-validation-for="@Model.Phone_3" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Website" class="form-label">Website</label>
+                    <input class="form-control" asp-for="@Model.Website">
+                    <span asp-validation-for="@Model.Website" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Capacity" class="form-label">Capacity</label>
+                    <input class="form-control" asp-for="@Model.Capacity">
+                    <span asp-validation-for="@Model.Capacity" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
@@ -79,6 +87,26 @@
                     <label asp-for="@Model.Location_Note" class="form-label">Location_Note</label>
                     <input class="form-control" asp-for="@Model.Location_Note">
                     <span asp-validation-for="@Model.Location_Note" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Tags" class="form-label">Tags</label>
+                    <select class="form-control mb-3 selectTwo" aria-label="Default select example" multiple="multiple" asp-for="@Model.Tags">
+                        @foreach (var item in ViewBag.Tags)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="@Model.Features" class="form-label">Features</label>
+                    <select class="form-control mb-3 selectTwo" aria-label="Default select example" multiple="multiple" asp-for="@Model.Features">
+                        @foreach (var item in ViewBag.Features)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Create</button>
