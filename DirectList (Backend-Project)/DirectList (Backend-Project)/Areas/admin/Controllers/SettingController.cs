@@ -48,11 +48,28 @@ namespace DirectList__Backend_Project_.Areas.admin.Controllers
                     {
                         if (setting.LogoFile.Length<2097152)
                         {
+                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
+                            string path = Path.Combine(_webHostEnvironment.WebRootPath,"Uploads",filename);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                setting.LogoFile.CopyTo(stream);
+                            }
+                            setting.Logo = filename;
 
                             _appDbContext.Settings.Add(setting);
                             _appDbContext.SaveChanges();
                             return RedirectToAction("Index");
                         }
+                        else
+                        {
+                            ModelState.AddModelError("", "Picture must be then less 2mb");
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Picture must be png or jpeg format");
+                        return RedirectToAction("Index");
                     }
                 }
             }
@@ -75,6 +92,20 @@ namespace DirectList__Backend_Project_.Areas.admin.Controllers
                     {
                         if (setting.LogoFile.Length < 2097152)
                         {
+
+                            string oldPathFile = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", setting.Logo);
+
+                            if (System.IO.File.Exists(oldPathFile))
+                            {
+                                System.IO.File.Delete(oldPathFile);
+                            }
+
+                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
+                            string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                setting.LogoFile.CopyTo(stream);
+                            }
 
                             _appDbContext.Settings.Update(setting);
                             _appDbContext.SaveChanges();
@@ -110,10 +141,8 @@ namespace DirectList__Backend_Project_.Areas.admin.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
-
-
-            return View();
+            ModelState.AddModelError("","setting is not found");
+            return RedirectToAction("Index");
         }
     }
 }

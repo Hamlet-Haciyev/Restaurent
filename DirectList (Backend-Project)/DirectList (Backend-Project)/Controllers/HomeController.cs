@@ -2,6 +2,7 @@
 using DirectList__Backend_Project_.Models;
 using DirectList__Backend_Project_.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,34 @@ namespace DirectList__Backend_Project_.Controllers
         {
             Setting setting = _appDbContext.Settings.FirstOrDefault();
             List<Social> socials = _appDbContext.Socials.ToList();
-            VmLayout vmLayout = new VmLayout()
+            List<YourDream> yourDreams = _appDbContext.YourDreams.ToList();
+            List<Blog> blogs = _appDbContext.Blogs.OrderByDescending(o=>o.CreatedDate).ToList();
+            List<Restaurant> restaurants = _appDbContext.Restaurants.Include(r=>r.RestaurantImages).ToList();
+            List<RestBook> restBooks = _appDbContext.RestBooks.ToList();
+            List<Restaurant> mostVisitedRestaurants = _appDbContext.Restaurants
+                                                                        .Include(r => r.RestaurantImages)
+                                                                        .Take(4)
+                                                                        .ToList();
+
+
+            VmHome vmHome = new VmHome()
             {
                 Setting = setting,
-                Socials = socials
-
+                Socials = socials,
+                YourDreams=yourDreams,
+                Blogs=blogs,
+                Restaurants =restaurants,
+               MostVisitedRestaurants= mostVisitedRestaurants
             };
 
-            return View(vmLayout);
+            return View(vmHome);
         }
 
         
+    }
+    class Cust
+    {
+        public int Count { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace DirectList__Backend_Project_.ViewModels
         public BlogComment BlogComment { get; set; }
         public List<Blog> PopularPosts { get; set; }
         public Banner Banner { get; set; }
+        public CustomUser CustomUser { get; set; }
+        public List<BlogComment> ReplyComments { get; set; }
     }
 }

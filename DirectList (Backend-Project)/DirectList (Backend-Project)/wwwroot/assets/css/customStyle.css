@@ -1,0 +1,13 @@
+﻿.myAdded {
+    color: white !important;
+    background-color: red !important;
+}
+.replyComment {
+    display: none;
+    visibility: hidden;
+}
+
+.show {
+    display: block;
+    visibility: visible;
+}

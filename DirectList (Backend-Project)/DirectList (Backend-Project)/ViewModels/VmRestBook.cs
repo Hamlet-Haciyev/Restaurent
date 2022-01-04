@@ -10,5 +10,7 @@ namespace DirectList__Backend_Project_.ViewModels
     {
         public Restaurant Restaurant { get; set; }
         public RestBook RestBook { get; set; }
+        public RestaurantComment RestaurantComment { get; set; }
+        public List<RestaurantComment> RestaurantComments { get; set; }
     }
 }

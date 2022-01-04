@@ -32,9 +32,9 @@
                     <div class="">
                         <div class="detail-tile mb-4">
                             <h3>
-                                <span>@Model.Restaurant.Name </span>
+                                <span>@Model.Restaurant?.Name </span>
 
-                                    @if ((Model.Restaurant.StartDate.Hour < DateTime.Now.Hour && Model.Restaurant.StartDate.Minute <= DateTime.Now.Minute) && (Model.Restaurant.EndDate.Hour > DateTime.Now.Hour && Model.Restaurant.EndDate.Minute <= DateTime.Now.Minute))
+                                    @if ((Model.Restaurant?.StartDate.Hour < DateTime.Now.Hour && Model.Restaurant?.StartDate.Minute <= DateTime.Now.Minute) && (Model.Restaurant?.EndDate.Hour > DateTime.Now.Hour && Model.Restaurant?.EndDate.Minute <= DateTime.Now.Minute))
                                     {
                                        <span class="badge badge-pill badge-success text-uppercase">Open</span>
                                      }
@@ -44,8 +44,8 @@
                                     }
 
                             </h3>
-                            <p>@Model.Restaurant.Address</p>
-                            @foreach (var item in Model.Restaurant.TagToRestaurants)
+                            <p>@Model.Restaurant?.Address</p>
+                            @foreach (var item in Model.Restaurant?.TagToRestaurants)
                             {
                                 <span class="badge badge-pill badge-info text-uppercase mr-2">@item.Tag.Name</span>
 
@@ -71,12 +71,8 @@
                             <div class="card-body">
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                                      @Html.Raw(Model.Restaurant.About)
-                                        @*<p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat rerum doloribus repudiandae nulla odit, omnis ex, a assumenda fugiat quasi neque necessitatibus fugit maiores quis. Quo dolor minus pariatur natus!</p>
-                                        <p class="description">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat rerum doloribus repudiandae nulla odit, omnis ex, a assumenda fugiat quasi neque necessitatibus fugit maiores quis. Quo dolor minus pariatur natus! Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Blanditiis quis laudantium est pariatur, harum laboriosam odit delectus vitae minima dolorem ipsam repudiandae sunt non. Dolorem adipisci voluptates doloribus voluptatum nihil.
-                                        </p>*@
+                                        @Html.Raw(Model.Restaurant?.About)
+                                      
                                         <h4 class="mb-4">
                                             Contact Info
                                         </h4>
@@ -109,18 +105,18 @@
                                             </div>
                                         </div>
                                         <h4 class="mb-4">Features</h4>
-                                        @foreach (var item in Model.Restaurant.FeaturesToRestaurants)
+                                        @foreach (var item in Model.Restaurant?.FeaturesToRestaurants)
                                         {
                                             <span class="badge badge-pill badge-primary text-uppercase mr-2 mb-2">@item.Features.Name</span>
                                         }
-                                       
+
                                     </div>
                                     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                                         <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                                         <div>
                                             <!-- <agm-map [latitude]="lat" [longitude]="lng" style="height: 300px">
-                                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                                            </agm-map> -->
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map> -->
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
@@ -137,48 +133,94 @@
                                             </ul>
                                         </div>
                                     </div>
+
                                     <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
-                                        <div class="row mb-4 list-img-wrap">
-                                            <div class="col-md-2 list-img">
-                                                <img class="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" alt="image">
+                                        @foreach (var item in Model.RestaurantComments)
+                                        {
+                                            <div class="row mb-4 list-img-wrap">
+                                                <div class="col-md-2 list-img">
+                                                    <img class="img-fluid rounded-circle shadow-lg" src="~/assets/images/avatar3.png" alt="image">
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <h5 class="text-primary">@item.Name</h5>
+                                                    <p>
+                                                        @if (((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24 / 30 / 12) >= 1)
+                                                        {
+                                                            @((((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24 / 30 / 12).ToString("##") + " year ago").ToString());
+                                                        }
+                                                        else
+                                                        {
+                                                            @if (((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24 / 30) >= 1)
+                                                            {
+                                                                @((((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24 / 30).ToString("##") + " month ago").ToString());
+                                                            }
+                                                            else
+                                                            {
+                                                                if (((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24) >= 1)
+                                                                {
+                                                                    @((((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60 / 24).ToString("##") + " day ago").ToString());
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (((DateTime.Now - item.CreatedDate).TotalSeconds / 60 / 60) >= 1)
+                                                                    {
+                                                                        @((((DateTime.Now - item.CreatedDate).TotalSeconds / 60/60).ToString("##") + " hour ago").ToString());
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @if (((DateTime.Now - item.CreatedDate).TotalSeconds / 60) >= 1)
+                                                                        {
+                                                                            @((((DateTime.Now - item.CreatedDate).TotalSeconds / 60).ToString("##") + " minutes ago").ToString());
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @((((DateTime.Now - item.CreatedDate).TotalSeconds).ToString("##") + " seconds ago").ToString());
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </p>
+                                                    <p>
+                                                        @item.Text
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-10">
-                                                <h5 class="text-primary">Charlotte Ainsley</h5>
-                                                <p>15 Minutes Ago</p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                </p>
-                                                <button class="btn btn-sm btn-primary" type="button">Helpful?</button>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4 list-img-wrap">
-                                            <div class="col-md-2 list-img">
-                                                <img class="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-2.jpg" alt="image">
-                                            </div>
-                                            <div class="col-md-10">
-                                                <h5 class="text-primary">Sophia Ainsworth</h5>
-                                                <p>2 Days Ago</p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                </p>
-                                                <button class="btn btn-sm btn-primary" type="button">Helpful?</button>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-4 list-img-wrap">
-                                            <div class="col-md-2 list-img">
-                                                <img class="img-fluid rounded-circle shadow-lg" src="assets/images/thumb-1.jpg" alt="image">
-                                            </div>
-                                            <div class="col-md-10">
-                                                <h5 class="text-primary">Ava Acton</h5>
-                                                <p>3 days Ago</p>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                                </p>
-                                                <button class="btn btn-sm btn-primary" type="button">Helpful?</button>
-                                            </div>
+                                        }
+                                        <div id="add-review" class="add-review-box mt-4">
+                                            <h3 class="listing-desc-headline mb-4">Add Review</h3>
+                                            <form id="add-comment" class="add-comment" asp-controller="ListingFullWidth" asp-action="Comment" method="post">
+                                                <fieldset>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input asp-for="@Model.RestaurantComment.Name" placeholder="Name" class="form-control form-control-alternative">
+                                                                <span asp-validation-for="@Model.RestaurantComment.Name" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input asp-for="@Model.RestaurantComment.Email" type="email" placeholder="Email" class="form-control form-control-alternative">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <input asp-for="@Model.RestaurantComment.Subject" type="text" placeholder="Subject" class="form-control form-control-alternative">
+                                                                <span asp-validation-for="@Model.RestaurantComment.Subject"class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="form-group">
+                                                            <textarea asp-for="@Model.RestaurantComment.Text" class="form-control form-control-alternative" placeholder="Comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                            <span asp-validation-for="@Model.RestaurantComment.Text"class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <input type="hidden" asp-for="@Model.RestaurantComment.RestaurantId" value="@Model.Restaurant.Id" />
+                                                <button type="submit" class="mt-4 btn btn-primary">Submit Comment</button>
+                                                <div class="clearfix"></div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -192,24 +234,23 @@
                         <div class="boxed-widget booking-widget">
                             <div>
                                 <form asp-controller="ListingFullWidth" asp-action="Reserve" method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <div class="form-group focused">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Start date" asp-for="@Model.RestBook.Reserve_Date" type="date" value="06/18/2018">
+                                            <input class="form-control" placeholder="Start date" asp-for="@Model.RestBook.Reserve_Date"  >
                                         </div>
                                     </div>
                                     <div class="form-group focused">
                                         <div class="input-group">
-                                            @*<label asp-for="@Model.RestBook.FullName" class="form-control">FullName</label>*@
                                             <input class="form-control" placeholder="FullName" asp-for="@Model.RestBook.FullName" />
                                             <span asp-validation-for="@Model.RestBook.FullName"></span>
                                         </div>
                                     </div>
                                     <div class="form-group focused">
                                         <div class="input-group">
-                                            @*<label asp-for="@Model.RestBook.Series_Number" class="form-control">Series_Number</label>*@
                                             <input class="form-control" placeholder="Series_Number" asp-for="@Model.RestBook.Series_Number" />
                                             <span asp-validation-for="@Model.RestBook.Series_Number"></span>
                                         </div>
@@ -217,23 +258,16 @@
 
                                     <div class="form-group">
                                         <select class="form-control form-control-alternative custom-select" id="exampleFormControlSelect1" asp-for="@Model.RestBook.Person_Count">
-                                            <option selected>Guest</option>
+                                            <option selected disabled >Guest</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
                                             <option value="4">Four</option>
                                         </select>
                                     </div>
-                                    <input type="hidden" asp-for="@Model.Restaurant.Id" />
-                                    @*<input type="hidden" asp-for="@Model.Restaurant.Name" />
-                    <input type="hidden" asp-for="@Model.Restaurant.About" />
-                    <input type="hidden" asp-for="@Model.Restaurant.CreatedDate" />
-                    <input type="hidden" asp-for="@Model.Restaurant.StartDate" />
-                    <input type="hidden" asp-for="@Model.Restaurant.EndDate" />
-                    <input type="hidden" asp-for="@Model.Restaurant.Address" />
-                    <input type="hidden" asp-for="@Model.Restaurant.Phone_1" />
-                    <input type="hidden" asp-for="@Model.Restaurant.Phone_2" />
-                    <input type="hidden" asp-for="@Model.Restaurant.Phone_3" />*@
+
+                                    <input type="hidden" asp-for="@Model.RestBook.RestaurantId" value="@Model.Restaurant.Id" />
+                                    
 
                                     <!-- Book Now -->
                                     <button type="submit" class="btn btn-1 btn-primary d-block">Book Now</button>

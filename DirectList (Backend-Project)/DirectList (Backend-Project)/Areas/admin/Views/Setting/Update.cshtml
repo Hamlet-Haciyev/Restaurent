@@ -51,7 +51,7 @@
                     <span asp-validation-for="@Model.Email_2" class="text-danger"></span>
                 </div>
 
-
+                <input type="hidden" asp-for="@Model.Logo" />
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a asp-area="Admin" asp-controller="Setting" asp-action="Index">Back to list</a>
             </form>

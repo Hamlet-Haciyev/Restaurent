@@ -1,7 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model VmHome
 
+@{
+    ViewData["Title"] = "Home Page";
+    int i = 1;
+}
 <div class="position-relative">
     <section class="section section-lg section-hero section-shaped">
         <div class="shape shape-style-1 shape-primary">
@@ -31,7 +33,7 @@
                         </div>
                         <a href="#"><i class="fa fa-map-marker"></i></a>
                     </div>
-                   
+
                     <a href="#" class="btn main-search-btn btn-radius btn-lg btn-white">
                         <span class="btn-inner--text">Search</span>
                     </a>
@@ -59,103 +61,33 @@
     <div class="fullwidth-carousel-container">
         <div class="fullwidth-slick-carousel category-carousel">
             <!-- Item -->
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-bed"></i>
+
+            @foreach (var item in Model.Restaurants)
+            {
+                <div class="fw-carousel-item">
+                    <div class="category-box-container text-center">
+                        <div class="category-box">
+                            <div class="category-box-content">
+                                <div class="icon-title">
+                                    <i class="fa-2x fa fa-glass"></i>
+                                </div>
+                                <h3>
+                                    <a href="JavaScript:Void(0);" class="text-white">
+                                        Restaurants
+                                    </a>
+                                </h3>
                             </div>
-                            <h3>
-                                <a href="JavaScript:Void(0);" class="text-white">
-                                    Hotels
-                                </a>
-                            </h3>
-                            <span> <small>64 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-6.jpg')">
+                            <div class="category-box-background">
+                                <img src="~/Uploads/@item.RestaurantImages.FirstOrDefault().Image" style="height: 100%;" alt="Alternate Text" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-shopping-bag"></i>
-                            </div>
-                            <h3><a href="JavaScript:Void(0);" class="text-white">Shops</a></h3>
-                            <span> <small>14 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-5.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-calendar"></i>
-                            </div>
-                            <h3><a href="JavaScript:Void(0);" class="text-white">Events</a></h3>
-                            <span> <small>67 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-2.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-glass"></i>
-                            </div>
-                            <h3><a href="JavaScript:Void(0);" class="text-white">Fitness</a></h3>
-                            <span> <small>27 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-3.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-glass"></i>
-                            </div>
-                            <h3><a href="JavaScript:Void(0);" class="text-white">Nightlife</a></h3>
-                            <span> <small>22 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-4.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fw-carousel-item">
-                <div class="category-box-container text-center">
-                    <div class="category-box">
-                        <div class="category-box-content">
-                            <div class="icon-title">
-                                <i class="fa-2x fa fa-glass"></i>
-                            </div>
-                            <h3><a href="JavaScript:Void(0);" class="text-white">Eat & Drink</a></h3>
-                            <span> <small>127 listings</small> </span>
-                        </div>
-                        <div class="category-box-background" style="background-image: url('assets/images/cat-img-1.jpg')">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
+
 <div class="block-space bg-secondary">
     <div class="container">
         <div class="block-head text-center mb-5">
@@ -167,91 +99,49 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="simple-slick-carousel dots-nav">
-                    <div class="carousel-item">
-                        <div class="category-box-container text-center">
-                            <div class="listing-item-container">
-                                <div class="listing-item text-center">
-                                    <div class="mostviewed-bg" style="background-image: url('assets/images/most-img-4.jpg')">
-                                        <div class="listing-item-content">
-                                            <div class="list-logo">
-                                                <a> <img src="assets/images/logo-1.png" width="80" height="80" alt="logo"></a>
+                    @foreach (var item in Model.MostVisitedRestaurants)
+                    {
+
+                        <div class="carousel-item">
+                            <div class="category-box-container text-center">
+                                <div class="listing-item-container">
+                                    <div class="listing-item text-center">
+                                            <div class="mostviewed-bg">
+                                                <img src="~/Uploads/@item.RestaurantImages.FirstOrDefault().Image" alt="Alternate Text" />
                                             </div>
-                                            <span class="badge badge-pill badge-primary text-uppercase category-banner">Eat & Drink</span>
-                                            <h3><a href="JavaScript:Void(0);">Cafe Bar</a></h3>
-                                            <p class="mb-0"> <small>Wall Street, New York</small></p>
-                                            <span class="badge badge-pill badge-primary text-uppercase open-close-banner">Open</span>
-                                        </div>
-                                        <span class="round-pill like-banner d-block bg-primary"><i class="fa fa-heart-o"></i></span>
+                                            <div class="listing-item-content">
+                                                <div class="list-logo">
+                                                    <a> <img src="~/assets/images/@("logo-"+i+".png")" width="80" height="80" alt="list-logo"></a>
+                                                </div>
+                                                <span class="badge badge-pill badge-primary text-uppercase category-banner">Eat & Drink</span>
+                                                <h3><a href="JavaScript:Void(0);">@item.Name</a></h3>
+                                                <p class="mb-0"> <small>@item.Address</small></p>
+
+                                                @if ((item?.StartDate.Hour < DateTime.Now.Hour && item?.StartDate.Minute <= DateTime.Now.Minute) && (item?.EndDate.Hour > DateTime.Now.Hour && item?.EndDate.Minute <= DateTime.Now.Minute))
+                                                {
+                                                    <span class="badge badge-pill badge-primary text-uppercase open-close-banner">Open</span>
+
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-pill badge-danger text-uppercase open-close-banner">Closed</span>
+
+                                                }
+
+                                            </div>
+                                            <span class="round-pill like-banner d-block bg-primary"><i class="fa fa-heart-o"></i></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="category-box-container text-center">
-                            <div class="listing-item-container">
-                                <div class="listing-item text-center">
-                                    <div class="mostviewed-bg" style="background-image: url('assets/images/most-img-3.jpg')">
-                                        <div class="listing-item-content">
-                                            <div class="list-logo">
-                                                <a> <img src="assets/images/logo-2.png" width="80" height="80" alt="logo"></a>
-                                            </div>
-                                            <span class="badge badge-pill badge-primary text-uppercase category-banner">Concert</span>
-                                            <h3><a href="JavaScript:Void(0);">Milky Ducth</a></h3>
-                                            <p class="mb-0"> <small>MayLand Square, LA</small></p>
-                                            <span class="badge badge-pill badge-primary text-uppercase open-close-banner">Coming Soon</span>
-                                        </div>
-                                        <span class="round-pill like-banner d-block bg-primary"><i class="fa fa-heart-o"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="category-box-container text-center">
-                            <div class="listing-item-container">
-                                <div class="listing-item text-center">
-                                    <div class="mostviewed-bg" style="background-image: url('assets/images/most-img-2.jpg')">
-                                        <div class="listing-item-content">
-                                            <div class="list-logo">
-                                                <a> <img src="assets/images/logo-3.png" width="80" height="80" alt="list-logo"></a>
-                                            </div>
-                                            <span class="badge badge-pill badge-primary text-uppercase category-banner">Hotels</span>
-                                            <h3><a href="JavaScript:Void(0);">Maledy Hotels</a></h3>
-                                            <p class="mb-0"> <small>672, CreedWay, New York</small></p>
-                                            <span class="badge badge-pill badge-primary text-uppercase open-close-banner">Open</span>
-                                        </div>
-                                        <span class="round-pill like-banner d-block bg-primary"><i class="fa fa-heart-o"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="category-box-container text-center">
-                            <div class="listing-item-container">
-                                <div class="listing-item text-center">
-                                    <div class="mostviewed-bg" style="background-image: url('assets/images/most-img-1.jpg')">
-                                        <div class="listing-item-content">
-                                            <div class="list-logo">
-                                                <a> <img src="assets/images/logo-4.png" width="80" height="80" alt="list-logo"></a>
-                                            </div>
-                                            <span class="badge badge-pill badge-primary text-uppercase category-banner">Eat & Drink</span>
-                                            <h3><a href="JavaScript:Void(0);">Donuts Hub</a></h3>
-                                            <p class="mb-0"> <small>56,Hihu Pora, New Yorkk</small></p>
-                                            <span class="badge badge-pill badge-primary text-uppercase open-close-banner">Open</span>
-                                        </div>
-                                        <span class="round-pill like-banner d-block bg-primary"><i class="fa fa-heart-o"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        i++;
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="block-space bg-primary">
     <div class="container">
         <div class="block-head text-center mb-5">
@@ -265,27 +155,16 @@
     </div>
     <div class="container">
         <div class="row row-grid mt-5">
-            <div class="col-lg-4 text-center">
-                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                    <i class="fa fa-search"></i>
+            @foreach (var item in Model.YourDreams)
+            {
+                <div class="col-lg-4 text-center">
+                    <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                        <i class="@item.Icon"></i>
+                    </div>
+                    <h5 class="text-white mt-3">@item.Title</h5>
+                    <p class="text-white mt-3">@item.Content</p>
                 </div>
-                <h5 class="text-white mt-3">Find Interesting Place</h5>
-                <p class="text-white mt-3">Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros sollicitudin turpis.</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                    <i class="fa fa-phone-square"></i>
-                </div>
-                <h5 class="text-white mt-3">Contact a Few Owners</h5>
-                <p class="text-white mt-3">Maecenas pulvinar, risus in facilisis dignissim, quam nisi hendrerit nulla, id vestibulum metus nullam viverra porta purus.</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                    <i class="fa fa-user-plus"></i>
-                </div>
-                <h5 class="text-white mt-3">Make a Reservation</h5>
-                <p class="text-white mt-3">Faucibus ante, in porttitor tellus blandit et. Phasellus tincidunt metus lectus sollicitudin feugiat pharetra consectetur.</p>
-            </div>
+            }
         </div>
     </div>
 </div>
@@ -301,39 +180,20 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="row row-grid">
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <img class="img-fluid" src="assets/images/post-1.jpg" alt="list-logo">
-                            <div class="card-body py-4">
-                                <h5>Take a Look at Hotels for All Budgets</h5>
-                                <p>22 August 2018</p>
-                                <p class="description mb-4">Sed sed tristique nibh iam porta volutpat finibus. Donec in aliquet urneget mattis lorem. Pellentesque pellentesque</p>
-                                <a class="btn btn-primary" href="JavaScript:Void(0);">Read More</a>
+                    @foreach (var item in Model.Blogs)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <img class="img-fluid" src="~/Uploads/@item.Image" alt="list-logo">
+                                <div class="card-body py-4">
+                                    <h5>@item.Title</h5>
+                                    <p>@item.CreatedDate.ToString("dd MMMM yyyy")</p>
+                                    <p class="description mb-4">@item.About</p>
+                                    <a class="btn btn-primary" style="color:white;" asp-controller="Blog" asp-action="detail" asp-route-id="@item.Id">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <img class="img-fluid" src="assets/images/post-2.jpg" alt="list-logo">
-                            <div class="card-body py-4">
-                                <h5>The 50 Greatest Street Arts In London</h5>
-                                <p>22 August 2018</p>
-                                <p class="description mb-4">Sed sed tristique nibh iam porta volutpat finibus. Donec in aliquet urneget mattis lorem. Pellentesque pellentesque</p>
-                                <a class="btn btn-primary" href="JavaScript:Void(0);">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <img class="img-fluid" src="assets/images/post-3.jpg" alt="list-logo">
-                            <div class="card-body py-4">
-                                <h5>The Best Cofee Shops In Sydney Neighborhoods</h5>
-                                <p>22 August 2018</p>
-                                <p class="description mb-4">Sed sed tristique nibh iam porta volutpat finibus. Donec in aliquet urneget mattis lorem. Pellentesque pellentesque</p>
-                                <a class="btn btn-primary" href="JavaScript:Void(0);">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>

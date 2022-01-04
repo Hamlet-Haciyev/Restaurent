@@ -208,3 +208,4 @@ C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Setting\Index.cshtml.g.cs
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Setting\Create.cshtml.g.cs
 C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Areas\admin\Views\Setting\Update.cshtml.g.cs
+C:\Users\FX505GT\Desktop\Asp.Net Project\DirectList (Backend-Project)\DirectList (Backend-Project)\obj\Debug\netcoreapp3.1\Razor\Views\ListingFullWidth\Cart.cshtml.g.cs

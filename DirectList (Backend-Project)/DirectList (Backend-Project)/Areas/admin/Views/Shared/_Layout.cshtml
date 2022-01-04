@@ -1,5 +1,8 @@
 ﻿@inject UserManager<IdentityUser> userManager
 @inject SignInManager<IdentityUser> signInManager
+@inject IWebHostEnvironment _webHostEnvironment
+@*I use AppdbContext beacuse User show profile photo*@
+@inject AppDbContext _appDbContext
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,6 +78,7 @@
                         <a class="collapse-item" asp-area="Admin" asp-controller="YourDream" asp-action="Index">YourDream</a>
                         <a class="collapse-item" asp-area="Admin" asp-controller="Account" asp-action="Users">Users</a>
                         <a class="collapse-item" asp-area="Admin" asp-controller="Administrator" asp-action="Index">Administrator</a>
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Setting" asp-action="Index">Setting</a>
                     </div>
                 </div>
 
@@ -275,12 +279,15 @@
                         <!-- Nav Item - User Information -->
                         @if (signInManager.IsSignedIn(User))
                         {
+                            string id = userManager.GetUserId(User);
+                            CustomUser user = _appDbContext.CustomUsers.Find(id);
+
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">@userManager.GetUserName(User)</span>
                                     <img class="img-profile rounded-circle"
-                                         src="~/Areas/img/undraw_profile.svg">
+                                         src="~/Uploads/@user.Image">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
