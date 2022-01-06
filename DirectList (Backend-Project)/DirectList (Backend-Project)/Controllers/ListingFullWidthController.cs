@@ -19,9 +19,13 @@ namespace DirectList__Backend_Project_.Controllers
         {
             _appDbContext = appDbContext;
         }
-        public async Task<IActionResult> Index(string searchLocation)
+        public async Task<IActionResult> Index(string searchLocation,int? page)
         {
-            //List<string> cartList1 = Request.Cookies["cart"].Split("-").ToList();
+
+            if (page == null || page <= 1)
+            {
+                page = 1;
+            }
 
             Banner banner = await _appDbContext.Banners.FirstOrDefaultAsync(b => b.Page.ToLower() == "listing");
             Setting setting = await  _appDbContext.Settings.FirstOrDefaultAsync();
@@ -31,13 +35,23 @@ namespace DirectList__Backend_Project_.Controllers
                                                             .Include(tr => tr.TagToRestaurants).ThenInclude(t => t.Tag)
                                                             .Include(fr => fr.FeaturesToRestaurants).ThenInclude(f => f.Features)
                                                             .Include(mr => mr.MenuToRestaurants).ThenInclude(m => m.Menu)
-                                                            .Where(r => (searchLocation != null ? ( r.Location.Contains(searchLocation)): true))
+                                                            .Where(r => (searchLocation != null ? ( r.Location.Contains(searchLocation)) : true))
                                                             .ToListAsync();
             List<string> cartList = Request.Cookies["cart"].Split("-").ToList();
 
+
+            double itemCount = 3;
+
+            int pageCount = (int)Math.Ceiling(Convert.ToDecimal(restaurants.Count / itemCount));
+
+            ViewBag.PageCount = pageCount;
+            ViewBag.Page = page;
+
+
+
             VmRestaurants vmRestaurants = new VmRestaurants()
             {
-                Restaurants = restaurants,
+                Restaurants = restaurants.Skip((int)(page-1) * (int)itemCount).Take((int)itemCount).ToList(),
                 Socials = socials,
                 Setting = setting,
                 Banner= banner,

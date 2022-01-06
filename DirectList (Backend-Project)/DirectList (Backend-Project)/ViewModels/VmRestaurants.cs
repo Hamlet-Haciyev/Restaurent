@@ -12,5 +12,6 @@ namespace DirectList__Backend_Project_.ViewModels
         public Banner Banner { get; set; }
         public List<string> cartList { get; set; }
         public RestaurantComment RestaurantComment { get; set; }
+        public int page { get; set; }
     }
 }
